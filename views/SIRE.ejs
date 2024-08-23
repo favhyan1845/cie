@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- head -->
+    <%- include ('templates/head') -%>  
+<body> 
+ <!-- header -->
+ <div class="content-desktop col-12">
+    
+    <div class="cont-map">
+      <span class="logo_cie"></span>
+        <div id="appContainer">
+          <div id="viewDiv"></div>
+          
+          <%- include ('templates/panelSire') -%>
+          
+          <div id="tableContainer" class="container">
+            
+          </div>
+        </div>
+          <div id="cont-visor-sire">  
+              
+            <div id="divsiremaps">
+                <iframe class="divsire" src="https://app.sab.gov.co/lluvias/"></iframe>
+            </div>        
+        </div>
+       
+        
+        
+       
+
+
+  </div>
+
+  
+            <%- include ('templates/panelOperador') -%>
+            
+            <%- include ('templates/resumen') -%> 
+            
+            <%- include ('templates/diagnostico') -%>       
+
+    </div>   
+
+        <script src="/js/sire.js"></script> 
+        <script src="https://js.arcgis.com/4.19/"></script>  
+        <script src="/js/script.js"></script> 
+     
+
+</body>
+</html>

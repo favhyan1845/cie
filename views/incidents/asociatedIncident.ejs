@@ -1,0 +1,31 @@
+<div class="asociate_events_info_head">Incidentes Asociados a Evento Seleccionado</div>
+<div id="loader_event_asoc" style="display:none;"></div>
+<div style="display:none;" id="asoc_event_load" class="animate-bottom">
+<table id="tabla_incidente_asociado" class="table">
+    
+    
+    <tbody>
+
+        <tr>
+            <td class="incident_table_description_head">Código</td>
+            <td class="incident_table_description_head">Emergencia</td>
+            <td class="incident_table_description_head">Teléfono</td>
+            <td class="incident_table_description_head">Fecha</td>
+        </tr>
+
+        <% for(var incidents of eventinfo) {%>
+
+
+            <tr>
+                <td class="incident_table_description"><%= incidents.ID %></td>
+                <td class="incident_table_description"><%= incidents.TIPO_EVENTO %></td>
+                <td class="incident_table_description"><%= incidents.TELEFONO %></td>
+                <td class="incident_table_description"><%= incidents.FECHA_INICIO %></td>
+            </tr>
+
+            <% } %>
+
+
+    </tbody>
+</table>
+</div>

@@ -1,0 +1,311 @@
+<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/css/bootstrap.min.css">
+
+<!-- Modal -->
+<div class="modal fade" id="myModal3" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="width: 1000px; height: 600px; left:-20%">
+
+           <!--  <div>
+                <button type="button" class="close" data-dismiss="modal" aria-label="Close" onclick="limpiar()"><span aria-hidden="true">&times;</span></button>
+            </div> -->
+
+
+            <div class="modal-body" style="background-color: #303030; border: 2px solid #009061;">
+                <div class="borde-reporte">
+                    <div class="head_reporte">
+                        <label id="head_reporte_evento">EVENTO</label>
+                        <!-- <label id="head_reporte_num_evento">000000-0</label> -->
+                        <label id="head_reporte_reporta">Reporta</label>
+                        <label id="head_reporte_tipo_evento">Evento</label>
+                        <label name="head_reporte_prioridad" id="head_reporte_prioridad">Prioridad</label>
+                        <label id="head_reporte_hora">Hora</label>
+                        <div id="head_reporte_num_hora"></div>
+                    </div>
+                    <form class="formulario" action="/events/insert/" method="POST" accept-charset="UTF-8" id="event_form">
+                        
+                        <div class="cont_izq_reporte" id="cont_izq_reporte">
+                            <input type="hidden" name="modo_geolocalizacion" id="modo_geolocalizacion"></input>
+                            <input type="hidden" name="latitud_inp" id="latitud_inp"></input>
+                            <input type="hidden" name="longitud_inp" id="longitud_inp"></input>
+                            <input type="hidden" name="hora_inicial" id="hora_inicial"></input>
+                            <input type="hidden" name="hora_actual" id="hora_actual"></input>
+                            <input type="hidden" name="hora_previa" id="hora_previa"></input>
+                            <input type="hidden" name="hora_final" id="hora_final"></input>
+                            <input type="hidden" name="evento_representativo" id="evento_representativo"></input>
+                            <input type="hidden" name="reporta_inp" id="reporta_inp"></input>
+                            <input type="hidden" name="pais_inp" id="pais_inp"></input>
+                            <input type="hidden" name="departamento_inp" id="departamento_inp"></input>
+                            <input type="hidden" name="region_inp" id="region_inp"></input>
+                            <input type="hidden" name="ciudad_inp" id="ciudad_inp"></input>
+                            <input type="hidden" name="asociated_id" id="asociated_id"></input>
+                            <input type="hidden" name="incomplete_report" id="incomplete_report"></input>
+                            
+
+
+                            <span class="localizacion-img"></span>
+                            <label class="rep-tel-lab">Teléfono :</label>
+                            <input name="inp_tel" id="inp_tel" onkeypress='return validaNumericos(event)' maxlength="10"></input>
+
+                            <label class="rep-direccion-lab">Dirección :</label>
+
+                            <!-- Button trigger modal -->
+                            <div id='cont-google'>
+                                <button type="button" class="btn-geocode" data-toggle="modal" data-target="#myModal" data-lat='4.67' data-lng='-74.095' onclick="limpiar_geo()">
+                                    Buscar
+                            </button>
+                            </div>
+
+
+                            <input name="inp_geocode" id="inp_geocode"></input>
+                            <label class="rep-ubicacion-lab">Ubicación :</label>
+
+                            <!-- Button trigger modal -->
+                            <div id='cont-google2'>
+                                <button type="button" class="btn-places" data-toggle="modal" data-target="#myModal2" data-lat='4.67' data-lng='-74.095' onclick="limpiar_geo()">
+                                Buscar
+                                </button>
+                            </div>
+
+                            <input name="inp_places" id="inp_places"></input>
+                            <label class="rep-localidad-lab">Localidad :</label>
+                            <input name="inp_localidad" id="inp_localidad" class="input" name="inp_localidad" type="text" readonly></input>
+
+                            <div id='cont-btn-localidad' style="display: none;">
+                                <button type="button" id="tipo_localidad" class="btn-localidad" onclick="openSeleccionarLocalidad()" >
+                                Buscar
+                                </button>
+                            </div>
+
+                            <label class="rep-barrio-lab">Barrio :</label>
+                            <input name="inp_barrio" id="inp_barrio"></input>
+                            <label class="rep-edificio-lab">Edificio :</label>
+                            <input name="inp_edificio" id="inp_edificio" onkeypress='return validaNumericos(event)' maxlength="3"></input>
+                            <label class="rep-postal-lab">Cód Postal :</label>
+                            <input name="inp_postal" id="inp_postal"></input>
+                            <label class="rep-piso-lab">Piso :</label>
+                            <input name="inp_piso" id="inp_piso" onkeypress='return validaNumericos(event)' maxlength="3"></input>
+                            <label class="rep-apto-lab">Apto :</label>
+                            <input name="inp_apto" id="inp_apto" onkeypress='return validaNumericos(event)' maxlength="4"></input>
+                            
+
+                              <!-- Default dropleft button -->
+                            <div class="cont-filtro-reporta">
+                                <div class="dropdown">
+                                    <button class="btn-prioridad dropdown-toggle" type="button" id="filtro_reporta" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Reporta   
+                                        </button>
+                                    <div id="reporta_dropdown" class="dropdown-menu" style="min-width:120px !important; font-size: 10px; padding-right: 3px;">
+                                        <div class="season-item" value="Usuario">Usuario</div>
+                                        <div class="season-item" value="Entidad">Entidad</div>
+                                        <div class="season-item" value="Comunidad">Comunidad</div>
+                                    </div>
+                                </div>
+                            </div>
+                            
+                            <div class="reporte-evento1" id="cont_reporte_evento1">
+                                <label class="evt-lab">Evento 1 :</label>
+                                <label class="tipoevt-lab">Tipo :</label>
+                                <input name="inp_evt1" id="inp_evt1" maxlength="5" onkeypress="event1_enter(event)"></input>
+                                <label class="preguntas-lab">Preguntas Adicionales :</label>
+                                
+                                <div id="cont_request_info_evt1">
+                                    <input type="hidden" name="head_reporte_prioridad_inp" id="head_reporte_prioridad_inp"></input>
+                                    <input name="evt1_desc" id="evt1_desc"></input>
+                                    <div name="preguntas_evt1" id="preguntas_evt1">                                    
+                                    </div>
+
+                            <!-- Default dropleft button -->
+                            <div class="cont-filtro-prioridad">
+                                <div class="dropdown">
+                                    <button class="btn-prioridad dropdown-toggle" type="button" id="filtro_prioridad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                          Prioridad
+                                        </button>
+                                    <div id="priority_dropdown" class="dropdown-menu" style="min-width:90px !important; font-size: 10px;">
+                                        <div class="season-item" priority="Prioridad Alta" value="1">Prioridad Alta</div>
+                                        <div class="season-item" priority="Prioridad Media" value="2">Prioridad Media</div>
+                                        <div class="season-item" priority="Prioridad Baja" value="3">Prioridad Baja</div>
+                                        <!-- <div class="season-item" priority="Urgencia Menor" value="4">Urgencia menor</div>
+                                        <div class="season-item" priority="No Urgente" value="5">No urgente</div> -->
+                                    </div>
+                                </div>
+                            </div>
+
+                                </div>
+
+                            <label class="descripcion-lab">Descripción :</label>
+                            <input name="descripcion" id="descripcion-cont1"> </input>
+                            <label class="comentarios-lab">Comentarios :</label>
+                            <input name="comentarios" id="comentarios-cont1"> </input>
+                            <!-- <label class="ref-lab">Referencia :</label>  -->
+                            
+
+
+
+                          
+
+                            <!-- Button trigger modal -->
+                            <div id='cont-tipoevento'>
+                                <button type="button" id="tipoevt1" class="btn-places" onclick="openEventType1()">
+                                Buscar
+                                </button>
+                            </div>
+
+                        </div>
+
+
+                        <div class="reporte-evento2">
+                            <label class="evt-lab">Evento 2 :</label>
+                            <label class="tipoevt-lab">Tipo :</label>
+                            <input name="inp_evt2" id="inp_evt2" maxlength="5" onkeypress="event2_enter(event)"></input>
+                            
+                            <label class="preguntas-lab">Preguntas Adicionales :</label>
+
+
+                            <div id="cont_request_info_evt2">
+                                <input name="evt2_desc" id="evt2_desc"></input>
+                                <div name="preguntas_evt2" id="preguntas_evt2"></div>
+                            </div>
+
+                        <label class="descripcion-lab">Descripción :</label>
+                        <input name="descripcion" id="descripcion-cont2"> </input>
+                        <label class="comentarios-lab">Comentarios :</label>
+                        <input name="comentarios" id="comentarios-cont2"> </input>
+                        <!-- <label class="ref-lab">Referencia :</label>  -->                   
+
+                        <!-- Button trigger modal -->
+                        <div id='cont-tipoevento2'>
+                            <button type="button" id="tipoevt2" class="btn-places" onclick="openEventType2()" style="border: 1px solid #ffffff;">
+                            Buscar
+                            </button>
+                        </div>
+
+                    </div>
+
+
+
+                    </div>
+
+                        <div class="cont-btn-addfeature">
+                            <input class="btn-addfeature" id="addBtn" type="submit" value="Asignar" onclick="closeReport()" href="javascript:url('/cie')" />
+                        </div>
+
+                    <!--<div class="cont-btn-asociar">
+                            <input class="btn-asociar" id="btn_asociar" value="Asociar" onclick="closeReport()" />
+                        </div> -->
+
+                        <div class="cont-btn-nuevo-evento">
+                            <input class="btn-nuevo-evento" id="btn_nuevo_evt" value="Cerrar Evento" onclick="openCloseEvent()" />
+                        </div>
+
+<!--                         <div class="cont-btn-broma">
+                            <input class="btn-broma" type="submit" id="btn_broma" onclick="sendIncompleteReport()" />
+                        </div>
+
+                        <div class="cont-btn-caida">
+                            <input class="btn-caida" type="submit" id="btn_caida" onclick="sendIncompleteReport()" />
+                        </div> -->
+
+<!--                         <div class="cont-btn-cerrar-form">
+                            <button type="button" class="btn-places" onclick="openEventType1()">
+                                Cerrar
+                                </button>
+                        </div> -->
+
+                        <div class="cont-btn-cerrar">
+                            <input class="btn-cerrar" id="btn_cerrar" onclick="closeReport()" />
+                        </div>
+
+                    </form>
+
+
+                    <div class="cont-der-reporte">
+                        <div class="cont-der-reporte-borde">
+                            <div class="head_reporte_asociados">
+                                <label id="head_reporte_evento_asociado">Asociación</label>
+                            </div>
+
+                            <div id="asociable_events"></div>
+
+                            <div id="asociable_events_info">
+                                <div class="asociable_events_info_head">Descripción del Evento Seleccionado</div>
+                                
+                                <div id="asociable_events_info_cont">
+                                <div class="asociable_events_id">EVENTO ID :</div>
+                                <input id="info_evt_id" class="info_evt_id" ></input>
+                                <input id="info_evt_tipo" class="info_evt_tipo"></input>
+                                <div class="asociable_events_prioridad">PRIORIDAD :</div>
+                                <input id="info_evt_prioridad" class="info_evt_prioridad"></input>
+                                
+                                <div class="asociable_events_tel">Teléfono :</div>
+                                <input id="info_evt_tel" class="info_evt_tel"></input>
+                                <div class="asociable_events_direccion">Dirección :</div>
+                                <input id="info_evt_dir" class="info_evt_dir"></input>
+                                <div class="asociable_events_localidad">Localidad :</div>
+                                <input id="info_evt_loc" class="info_evt_loc"></input>
+                                <div class="asociable_events_barrio">Barrio :</div>
+                                <input id="info_evt_barrio" class="info_evt_barrio"></input>
+                                <div class="asociable_events_postal">Cód Postal :</div>
+                                <input id="info_evt_postal" class="info_evt_postal"></input>
+                                
+                                <div class="asociable_events_edificio">Edificio :</div>
+                                <input id="info_evt_edificio" class="info_evt_edificio"></input>
+                                <div class="asociable_events_piso">Piso :</div>
+                                <input id="info_evt_piso" class="info_evt_piso"></input>
+                                <div class="asociable_events_apto">Apto :</div>
+                                <input id="info_evt_apto" class="info_evt_apto"></input>
+                                
+                                <div class="cont_info_evt1">
+                                    <div class="event_label_info">EVENTO 1 :</div>
+                                    <div class="event_label_descripcion">Descripción :</div>
+                                    <div id="info_evt_descripcion1" class="info_evt_descripcion1"></div> 
+                                    <div class="event_label_comentarios">Comentarios :</div>
+                                    <div id="info_evt_comentario1" class="info_evt_comentario1"></div>
+                                </div>
+
+                                <div class="cont_info_evt2">
+                                    <div class="event_label_info">EVENTO 2 :</div>
+                                    <div class="event_label_descripcion">Descripción :</div>
+                                    <div id="info_evt_descripcion2" class="info_evt_descripcion2"></div> 
+                                    <div class="event_label_comentarios">Comentarios :</div>
+                                    <div id="info_evt_comentario2" class="info_evt_comentario2"></div>
+                                </div>
+                                
+                            </div>
+                            </div>
+
+                            <div id="asociate_events">
+                                <div class="asociate_events_info_head">Incidentes Asociados a Evento Seleccionado</div>
+                            </div>
+                            
+                            
+                            
+
+                        </div>
+                    </div>
+
+
+                </div>
+
+                <div class="desc_uso_reporte">Diligencie el formulario, cree el nuevo evento presionando <span class="green_word">Asignar</span> o asócielo a otro evento ingresando un primer tipo de evento válido y seleccionando el evento en el panel <span class="green_word">Eventos Asociables</span>, puede validar la información del evento seleccionado en los paneles de <span class="green_word">Descripción</span> e <span class="green_word">Incidentes Asociados</span>. En caso que el evento no sea válido, presione <span class="green_word">Cerrar Evento</span> y seleccione el motivo de invalidación del evento-incidente.</div>
+
+            </div>
+        </div>
+    </div>
+</div>
+    <%- include ('./templates/geocode') -%>
+    <%- include ('./templates/places') -%>
+    <%- include ('./templates/TipoEvento') -%>
+    <%- include ('./templates/cerrarReporte') -%>
+    <%- include ('./templates/listaLocalidades') -%>
+
+        <!-- Placed at the end of the document so the pages load faster -->
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.12.0/jquery.min.js"></script>
+        <script src="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/3.3.6/js/bootstrap.min.js"></script>
+        <script src="/js/geocode.js"></script>
+        <script src="/js/reporte.js"></script>
+        <script src="/js/script.js"></script>
+        <script src="/js/getReportData.js"></script>
+
+        <script src="https://unpkg.com/axios/dist/axios.min.js"></script>
+
+        

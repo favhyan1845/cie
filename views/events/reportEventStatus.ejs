@@ -1,0 +1,25 @@
+
+<div style="display:none;">
+<table id="tabla_eventoReporte_status" class="table">
+    <thead>
+        <tr>
+            <th class="head_tabla_evento_asociable">Estado Eventos</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!-- console.log(data.eventData[1][0].id_evento); -->
+        <% for(var events of eventData) {%>
+
+            
+            <tr>
+                <td class="check_asociable"><input type="checkbox" id="<%= events.ID_EVENTO %>" value="<%= events.ESTADO_EVENTO %>" nom_estado="<%= events.ESTADO %>" name="array[]" /></td>
+            </tr>
+
+            <% } %>
+
+
+    </tbody>
+</table>
+</div>
+

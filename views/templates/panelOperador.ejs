@@ -1,0 +1,45 @@
+<!-- Modal -->
+<div class="modal fade" id="myModal6" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+    <div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content" style="position: absolute; width: 200px; height: 100px; left:40%; margin-top:30%" >
+            <div class="modal-body" style="background-color: #DCDCDC; border: 2px solid #009061; ">
+
+                <div class="cerrar_sesion_txt">Desea Cerrar Sesión?</div>
+                <a href="/"><button type="button" class="btn_cerrar_sesion">Si</button></a>
+                <button type="button" class="btn_nocerrar_sesion" onclick="cancelar_cerrar_sesion()">Cancelar</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+
+
+<div id="content-user">
+    <div class="img_usuario_cont" onclick="cerrar_sesion()">
+        
+            <span class="btn-user"></span>
+        
+    </div>
+
+
+
+
+    <div class='cont_operador'>
+        <label class="name"><%= operador_nombre %> <%= operador_apellido %></label>
+        <label class="type-operator">Operador <%= ciudad %></label>
+    </div>
+    <div>
+        <!-- <span class="chat"></span> -->
+    </div>
+</div>
+
+<div>
+    <a id="btn_CIE" class="btn_CIE" href="javascript:url('/cie')" ></a>
+</div>
+<div><button id="btn_diligenciar_reporte" class="btn_diligenciar_reporte" onclick="getData()"></button> </div>
+<div>
+    <a id="btn_SIRE" class="btn_SIRE" href="javascript:url('/SIRE')"></a>
+</div>
+
+<script src="../../js/getReportData.js"></script>
+<script src="../../js/home.js"></script>

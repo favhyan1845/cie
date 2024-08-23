@@ -1,0 +1,40 @@
+<div class= 'cont-panel-sire'>
+    <div class= 'txt-panel-sire'>Mapas SIRE</div>
+    <span class="incendios"></span>
+    <span class="crecientes"></span>
+    <span class="cauces"></span>
+    <span class="lluvias"></span>
+    <span class="deslizamiento"></span>
+    <span class="sismo"></span>
+    <span class="lluvia_diaria"></span>
+    <div class="botones_sire">
+        <button class="enviar_sire" onclick="showSireMap('incendios')" value="Areas propensas a incendios forestales">Areas propensas a<br/>incendios forestales</button>
+        <hr>
+        <button class="enviar_sire" onclick="showSireMap('rios_quebradas')" value="Rios y quebradas propensos a crecientes torrenciales">Rios y quebradas propensos a crecientes torrenciales</button>
+        <hr>
+        <button class="enviar_sire" onclick="showSireMap('niveles_cauces')" value="Niveles de cauces">Niveles de cauces</button>
+        <hr>
+        <button class="enviar_sire" onclick="showSireMap('lluvias_tiempo_real')" value="Lluvias en tiempo real">Lluvias en tiempo real</button>
+        <hr>
+        <button class="enviar_sire" onclick="showSireMap('deslizamiento_lluvia')" value="Sitios propensos a deslizamiento por lluvias">Sitios propensos a <br/>deslizamiento por lluvias</button>
+        <hr>
+        <button class="enviar_sire" onclick="showSireMap('ultimo_sismo')" value="Ultimo sismo registrado por IDIGER">Ultimo sismo registrado <br/>por IDIGER</button>
+        <hr>
+        <button class="enviar_sire" onclick="showSireMap('lluvia_diaria_acumulada')" value="Lluvia diaria y acumulada en los ultimos dias">Lluvia diaria y acumulada<br/>en los ultimos dias</button>
+        <hr>
+
+        <div class="botones_sire_descarga">
+        <label class="pronostico_diario_txt">Consulte el pronostico del tiempo diario</label>
+        <button class="descarga_sire_pronostico" onclick="window.location.href='https://mapasbogota.sire.gov.co:8447/Boletines_Pronostico/PronoBogota.pdf';">Descargar</button>
+        <label class="evento_diario_txt">Reporte conjunto de eventos diarios</label>
+        <button class="descarga_sire_evento" onclick="window.open('https://www.sire.gov.co/web/sab/boletines');" >Descargar</button>
+        </div>
+    </div>
+    <span class="descarga_pronostico"></span>
+    <span class="descarga_evento"></span>
+    
+    </div>
+     
+
+
+

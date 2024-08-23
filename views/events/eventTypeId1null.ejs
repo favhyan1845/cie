@@ -1,0 +1,40 @@
+
+<input type="hidden" name="head_reporte_prioridad_inp" id="head_reporte_prioridad_inp" value= ""></input>
+<input name="evt1_desc" id="evt1_desc" value= ""></input>
+<div name="preguntas_evt1" id="preguntas_evt1" style="background-color: #CD5C5D; color:white; border: none;">EL TIPO DE EVENTO NO EXISTE, SELECCIONE UN TIPO DE EVENTO VÁLIDO</div>
+
+
+<div class="cont-filtro-prioridad">
+    <div class="dropdown">
+        <button class="btn-prioridad dropdown-toggle" type="button" id="filtro_prioridad" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+            Prioridad
+            </button>
+        <div id="priority_dropdown" class="dropdown-menu" style="min-width:90px !important; font-size: 10px;">
+            <div class="season-item" priority="Prioridad Alta" value="1">Prioridad Alta</div>
+            <div class="season-item" priority="Prioridad Media" value="2">Prioridad Media</div>
+            <div class="season-item" priority="Prioridad Baja" value="3">Prioridad Baja</div>
+            
+        </div>
+    </div>
+</div>
+
+<script>
+    var priorityvalue="";
+    var prioritydesc = "";
+    const priorityElement = document.getElementById("priority_dropdown");
+    priorityElement.addEventListener("click", getPriority);
+
+function getPriority(event) {
+    const selectedpriorityvalue = event.target.getAttribute("priority");
+    priorityvalue = event.target.getAttribute("value");
+    prioritydesc = event.target.getAttribute("priority");
+    document.getElementById('head_reporte_prioridad').innerHTML = selectedpriorityvalue;
+    document.getElementById('head_reporte_prioridad_inp').value = priorityvalue;
+    $("#filtro_prioridad").html(prioritydesc);
+    document.getElementById("tipoevt2").disabled = false;   
+    document.getElementById("tipoevt2").style.border = "1px solid #009061";
+    document.getElementById("inp_evt2").readOnly = false;
+
+};
+
+</script>

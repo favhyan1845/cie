@@ -1,0 +1,131 @@
+<div id="loader_event_type"></div>
+<div style="display:none;" id="event_type_load" class="animate-bottom">
+
+<table id="tabla_evento" class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th class="head_tabla_evento">Tipo de Evento</th>
+        </tr>
+    </thead>
+    <tbody>
+
+
+        <% for(var events of typeEventData) {%>
+
+
+            <tr id="col <%= events.codigo_evento %>">
+
+                <td class="event_table_description"><input onchange="checkF('<%= events.codigo_evento %>', '<%= events.desc_tipo_evento %>', '<%= events.nivel_prioridad %>', '<%= events.descripcion_prioridad %>', '<%= events.pregunta %>')" type="checkbox" name="type_evt_<%= events.codigo_evento %>" id="check_event_<%= events.codigo_evento %>" value="<%= events.codigo_evento %>" nom_evento="<%= events.desc_tipo_evento %>" /></td>
+                <td class="event_table_description">
+                    <%= events.desc_tipo_evento %>
+                </td>
+
+            </tr>
+
+            <% } %>
+
+
+    </tbody>
+</table>
+</div>
+
+
+<script>
+    var array_eventos = [];
+    var evento_principal = [];
+    var priorityvalue = "";
+    var FirstWord = "";
+    var tipo_evt1 ="";
+    var tipo_evento_format = "";
+    var tipo_evento_consultado = document.getElementById('event_table').getAttribute("tipo_evento_consultado")
+    function checkF(eventsid , eventsdesc , idprioridad, descprioridad, pregunta) {
+
+        var checkbox = document.getElementById(`check_event_${eventsid}`);
+        var div = document.getElementById(`col ${eventsid}`);
+        console.log(checkbox.value)
+
+
+        
+        if (checkbox.checked === true) {
+            array_eventos.push(checkbox.value)
+            div.style.backgroundColor = "#334933";
+            
+
+        } else {
+            div.style.backgroundColor = "transparent";
+
+            const index = array_eventos.indexOf(checkbox.value);
+            if (index > -1) {
+                array_eventos.splice(index, 1);
+            }
+            //array_eventos.pop(checkbox.value)
+
+        }
+        if (array_eventos.length >= 1) {
+            evento_principal = array_eventos[0];
+        }
+
+        var pregunta_format = pregunta.replaceAll("/", " <br/> ");
+        console.log(pregunta_format)
+
+        $('#myModal4').modal('hide');
+
+        
+        var EventType = document.getElementById("event_table");
+        EventType.addEventListener("click", getRepresentativeEvent);
+        if (tipo_evento_consultado == "evento1"){
+            
+            console.log("entra1")
+            document.getElementById('inp_evt1').value = eventsid;
+            document.getElementById('evt1_desc').value = eventsdesc;
+            $("#filtro_prioridad").html("Prioridad " + capitalize(descprioridad));
+            $("#head_reporte_prioridad").html("Prioridad " + capitalize(descprioridad));
+            $("#preguntas_evt1").html(pregunta_format);    
+            document.getElementById("tipoevt2").disabled = false;   
+            document.getElementById("tipoevt2").style.border = "1px solid #009061";
+            document.getElementById("inp_evt2").readOnly = false;
+            document.getElementById('descripcion-cont2').readOnly = false;
+            document.getElementById('comentarios-cont2').readOnly = false;
+            document.getElementById('head_reporte_prioridad_inp').value = idprioridad;
+            priorityvalue = idprioridad;           
+            tipo_evt1 = document.getElementById('evt1_desc').value;
+            const lower = tipo_evt1.toLowerCase();
+            tipo_evento_format = tipo_evt1.charAt(0).toUpperCase() + lower.slice(1);
+            FirstWord = tipo_evento_format.split(" ", 1);
+            document.getElementById('head_reporte_tipo_evento').innerHTML = FirstWord;
+            getAllEvents();
+        }else{
+            console.log("entra2")
+            document.getElementById('inp_evt2').value = eventsid;
+            document.getElementById('evt2_desc').value = eventsid + " - " + eventsdesc;
+            $("#preguntas_evt2").html(pregunta_format);
+            
+        }
+
+        console.log(document.getElementById('event_table').getAttribute("tipo_evento_consultado"));
+        
+        console.log(tipo_evento_format)
+        console.log(priorityvalue)
+        console.log(pregunta)
+    }
+
+    function capitalize(str){
+        const lower = str.toLowerCase();
+        return str.charAt(0).toUpperCase() + lower.slice(1)
+    }
+
+    
+    
+
+    function getRepresentativeEvent(event) {
+        if (tipo_evento_consultado == "evento1"){   
+    const selectedeventvalueFirstWord = event.target.getAttribute("nom_evento");
+    const eventValueFirstWord = capitalize(selectedeventvalueFirstWord)
+    FirstWord = eventValueFirstWord.split(" ", 1)
+    console.log("palabra primera" + FirstWord)
+    document.getElementById('head_reporte_tipo_evento').innerHTML = FirstWord;
+    document.getElementById('evento_representativo').value = FirstWord;
+        }    
+};
+</script>

@@ -1,0 +1,43 @@
+
+
+
+        <div id='resumen' class= 'cont-resumen col-3'>
+            
+            <div class="resumen_borde"><label class="resumen_t">Resumen </label></div>
+                <div class="row">
+                <div class='logos-resumen'>
+                    <span class="icono-alcaldia"></span>
+                    <span class="icono-operador"></span>
+                </div>
+            </div>
+           
+    
+            <div class="centro-atencion">
+                
+                <div class="centro_at"><label>CENTRO DE ATENCIÓN <label class='datos-din'> <%= centro_atencion_id %></label></div>
+                <div class="centro_at_nom"><label class='datos-din'><%= centro_atencion_nombre %></label> </div>
+                <div class="ciudad_id">Ciudad: <label class='datos-din'> <%= ciudad %> </label> </div>
+                <div class="operador_id">ID: <label class='datos-din'> <%= operador_id %> </label> </div>
+                <div class="centro_at_direc"><label class='datos-din'> <%= centro_atencion_direccion %> </label> </div>
+                
+                
+              
+                <div class="estado_ca"><label>Estado:</label>
+                    <span class="elipse"></span>
+                    <span class="en_linea"></span>
+                </div>
+                
+            </div>
+              
+            <div class="fecha">
+                <label class="fecha_hoy"><%= fecha_formateada %></label> 
+                <div id="hora_hoy"></div>
+                <label class="inicio_sesion">Inicio de sesión: <%= fecha_inicio_sesion %></label>
+            </div>
+            <div class="ip_usuario"><label>IP : <%= operador_ip %></label> </div>  
+        
+    </div>  
+
+    <script src="../../js/home.js"></script>
+      
+    

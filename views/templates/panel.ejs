@@ -1,0 +1,37 @@
+<div id='panel' class="cont-panel">
+    <div class="resumen_borde2">Monitoreo de Eventos</div>
+    <div class="panel_eventos"> 
+        
+        <div id="cont_monitoring_event">
+            <div class="monitoring_event_load">
+         <div class="evento_id"> 
+            EVENTO
+            <div id="cod_evento" class="cod_evento"><%= codigoEvento %></div> 
+        </div>
+        <div class="tipo_evento"><label id="tipo_evento_lab"><%= tipoEvento %><label></div>
+        <div class="prioridad_txt">Prioridad:</div>
+        <div class="tipo_prioridad"><label id="tipo_prioridad_lab"><%= codigoEvento %><label></div>
+       <div id="causas">
+            <div class="causas_cont">Causa:<label id="causas_txt" class="causas_txt"><%= descripcionEvento %><label></div>
+        </div>
+        <div class="entidades-asignadas">Entidades asignadas</div>
+        <div id="entidades_panel" class="entidades_panel">
+           
+        </div>
+            </div>  
+        </div>
+        <div id="cont_report_by_event">
+        <div id="reportes_movil_panel" class="reportes_movil_panel">
+            <div class="reportes_movil">
+                <div class="cont_danos_materiales"><span class="img_materiales"></span><span class="txt_danos">Daños Materiales</span><input class = "input_danos" id="input_danos_materiales" value="-" readonly></input></div>
+                <div class="cont_danos_animales"><span class="img_animales"></span><span class="txt_danos" style="color:#1C2046 !important">Daños de Animales</span><input class = "input_danos" id="input_danos_animales" value="-" readonly></input></div>
+                <div class="cont_danos_integridad"><span class="img_integridad"></span><span class="txt_danos">Daños a la integridad humana</span><input class = "input_danos" id="input_danos_integridad" value="-" readonly></input></div>
+                <div class="cont_danos_insumos"><span class="img_insumos"></span><span class="txt_danos" style="color:#1C2046 !important">Insumos y materiales</span><input class = "input_danos" id="input_danos_insumos" value="-" readonly></input></div>
+                <div class="cont_danos_soportes"><span class="img_soportes"></span><span class="txt_danos">Soportes</span><input class = "input_danos" id="input_danos_soportes" value="-" readonly></input></div>
+
+        </div>
+        </div>
+    </div>
+
+</div>
+</div>

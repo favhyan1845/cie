@@ -1,0 +1,60 @@
+<div id="loader_event_info"></div>
+<div style="display:none;" id="info_event_load" class="animate-bottom">
+
+
+        <div class="asociable_events_id">EVENTO ID :</div>
+        <input id="info_evt_id" class="info_evt_id" value="<%= eventinfo[0].ID_EVENTO %>" readonly></input>
+        <input id="info_evt_tipo" class="info_evt_tipo" value="<%= eventinfo[0].TIPO_EVENTO%>" readonly></input>
+        <div class="asociable_events_prioridad">PRIORIDAD :</div>
+        <input id="info_evt_prioridad" class="info_evt_prioridad" value="<%= eventinfo[0].PRIORIDAD %>" readonly></input>
+        
+        <div class="asociable_events_tel">Teléfono :</div>
+        <input id="info_evt_tel" class="info_evt_tel" value="<%= eventinfo[0].TELEFONO %>" readonly></input>
+        <div class="asociable_events_direccion">Dirección :</div>
+        <input id="info_evt_dir" class="info_evt_dir" value="<%= eventinfo[0].DIRECCION %>" readonly></input>
+        <div class="asociable_events_localidad">Localidad :</div>
+        <input id="info_evt_loc" class="info_evt_loc" value="<%= eventinfo[0].LOCALIDAD %>" readonly></input>
+        <div class="asociable_events_barrio">Barrio :</div>
+        <input id="info_evt_barrio" class="info_evt_barrio" value="<%= eventinfo[0].BARRIO %>" readonly></input>
+        <div class="asociable_events_postal">Cód Postal :</div>
+        <input id="info_evt_postal" class="info_evt_postal" value="<%= eventinfo[0].CODIGO_POSTAL %>" readonly></input>
+        
+        <div class="asociable_events_edificio">Edificio :</div>
+        <input id="info_evt_edificio" class="info_evt_edificio" value="<%= eventinfo.EDIFICIO_CASA %>" readonly></input>
+        <div class="asociable_events_piso">Piso :</div>
+        <input id="info_evt_piso" class="info_evt_piso" value="<%= eventinfo.PISO %>" readonly></input>
+        <div class="asociable_events_apto">Apto :</div>
+        <input id="info_evt_apto" class="info_evt_apto" value="<%= eventinfo.APTO %>" readonly></input>
+        
+        <div class="cont_info_evt1">
+            <div class="event_label_info">EVENTO 1 :</div>
+            <div class="event_label_descripcion">Descripción :</div>
+            <div id="info_evt_descripcion1" class="info_evt_descripcion1"><%= eventinfo[0].DESCRIPCION %></div> 
+            <div class="event_label_comentarios">Comentarios :</div>
+            <div id="info_evt_comentario1" class="info_evt_comentario1"><%= eventinfo[0].COMENTARIOS %></div>
+        </div>
+
+        <div class="cont_info_evt2">
+            <div class="event_label_info">EVENTO 2 :</div>
+            <div class="event_label_descripcion">Descripción :</div>
+            <div id="info_evt_descripcion2" class="info_evt_descripcion2"><%= eventinfo[0].DESCRIPCION %></div> 
+            <div class="event_label_comentarios">Comentarios :</div>
+            <div id="info_evt_comentario2" class="info_evt_comentario2"><%= eventinfo[0].COMENTARIOS %></div>
+        </div>
+
+</div>
+
+<script>
+    document.getElementById("info_evt_descripcion2").onload = function() {validar_existencia()};
+
+    function validar_existencia() {
+        descripcion = document.getElementById("info_evt_descripcion2");
+    if (descripcion === undefined){
+        $("#info_evt_descripcion2").html("");
+        $("#info_evt_comentario2").html("");
+
+    }
+    }
+
+
+</script>

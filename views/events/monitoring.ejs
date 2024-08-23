@@ -1,0 +1,58 @@
+<div id="loader_event_monitoring" ></div> 
+    
+            <div class="monitoring_event_load" id ="monitoring_load" style="display:none;" class="animate-bottom">
+        <div class="evento_id"> 
+            EVENTO
+            <div id="cod_evento" class="cod_evento"><%= eventinfo[0].ID_EVENTO1 %></div> 
+        </div>
+        <div class="tipo_evento"><label id="tipo_evento_lab"><%= eventinfo[0].TIPO_EVENTO.split(" ", 1) %><label></div>
+        <div class="prioridad_txt">Prioridad:</div>
+        <div class="tipo_prioridad"><label id="tipo_prioridad_lab"><%= eventinfo[0].prioridad %><label></div>
+        <div id="causas">
+            <div class="causas_cont">Causa:<label id="causas_txt" class="causas_txt"><%= eventinfo[0].DESCRIPCION_EVENTO %><label></div>
+        </div>
+        <div class="entidades-asignadas">Entidades asignadas</div>
+        <div id="entidades_panel" class="entidades_panel">
+            <table id="tabla_entidades_evento" class="table">
+                <thead> 
+                </thead>
+                <tbody>
+            
+                    <% for(var events of eventinfo) {%>
+               
+                        <tr>
+                            <td style="background-color: black;"><input class = "events_tipo_entidad" value="<%= events.tipo_entidad %>"></input></td>
+                            <td style="background-color:#303030;"><input class = "events_entidad" value="<%= events.entidad %>"></input></td>
+                            <td id="img_entidad_<%= events.id_entidad %>" class="img_entidad_" style='background-image: url("<%= events.logo_2 %>") ;' value= "<%= events.id_entidad %>"></td>
+                        </tr>
+                        <tr>
+                            <td ><input class = "events_direccion_entidad" value="<%= events.direccion_entidad %>"></input></td>
+                            <td class = "events_estado_entidad"><span><%= events.estado_evento %></span> <span class="reporte_txt">Reporte</span></td> 
+                            <td id="img_entidad_<%= events.id_entidad %>" class="img_estado_evt" value= "<%= events.id_entidad %>"></td>
+                        </tr>
+            
+            
+                        <% } %>
+            
+            
+                </tbody>
+            </table>
+        </div>
+</div>
+
+<script>
+function img_entidad(entity_id){
+
+var cont_img_entidad = document.getElementById(`img_entidad_${entity_id}`);
+console.log("entra img entidad")
+alert(cont_img_entidad)
+/* if (cont_img_entidad ==)
+
+{
+    var checkbox = document.getElementById(`check_event_${eventsid}`);
+    var div = document.getElementById(`col ${eventsid}`)
+    document.getElementById("addBtn").style.border = "2px solid #71DE6E";
+    document.getElementById("addBtn").style.backgroundImage = "url('../img/Formulario/cruz_activa.png')";
+} */
+}
+</script>

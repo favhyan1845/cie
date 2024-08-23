@@ -1,0 +1,139 @@
+<div id="loader_event_all" style="display:none;"></div>
+<div style="display:none;" id="all_event_load" class="animate-bottom">
+<table id="tabla_evento_asociable" class="table">
+    <thead>
+        <tr>
+            <th></th>
+            <th></th>
+            <th class="head_tabla_evento_asociable">Eventos Asociables</th>
+        </tr>
+    </thead>
+    <tbody>
+
+        <!-- console.log(data.eventData[1][0].id_evento); -->
+        <% for(var events of eventData) {%>
+
+            
+            <tr id="col <%= events[0].id_evento %>">
+                <td class="check_asociable"><input type="checkbox" onchange="infoevent('<%= events[0].id_evento %>')" name="type_evt" id="check_event_<%= events[0].id_evento %>" value="<%= events[0].id_evento %>" nom_evento="<%= events[0].tipo_evento %>" /></td>
+                <td class="allevent_table_description"><%= events[0].id_evento %></td>
+                <td class="allevent_table_description"><%= events[0].tipo_evento %></td>
+
+            </tr>
+
+            <% } %>
+
+
+    </tbody>
+</table>
+</div>
+
+
+<script>
+ /*
+ $('.check_asociable').on("change", function(){
+     $('.check_asociable').not(this).prop('checked',false);
+ });
+ 
+ */
+ 
+ /*  $('.table tbody tr').click(function(event) {
+  if (event.target.type !== 'radio') {
+    $(':radio', this).trigger('click');
+  }
+}); */
+ 
+    id = ""
+    var array_eventos_asoc = [];
+    var evento_info = [];
+
+    function infoevent(eventsid) {
+
+        var checkbox = document.getElementById(`check_event_${eventsid}`);
+        var div = document.getElementById(`col ${eventsid}`);
+        //console.log(checkbox.value)
+        if (checkbox.checked === true) {
+            array_eventos_asoc.push(checkbox.value)
+            div.style.backgroundColor = "#009061";
+            document.getElementById('asociated_id').value = checkbox.value;
+
+        } else {
+            div.style.backgroundColor = "transparent";
+
+            const index = array_eventos_asoc.indexOf(checkbox.value);
+            if (index > -1) {
+                array_eventos_asoc.splice(index, 1);
+            }
+            //array_eventos.pop(checkbox.value)
+
+        }
+        if (array_eventos_asoc.length >= 1) {
+            evento_info = array_eventos_asoc[array_eventos_asoc.length - 1];
+        }
+
+        console.log("array eventos " + array_eventos_asoc)
+        console.log("evento principal " + evento_info)
+        getEvent(evento_info)
+        getIdIncident(evento_info)
+    }
+
+
+
+   var url_eventInfo = "/events/getEventInfo"
+
+    
+
+   function getEvent(id) {
+    console.log("entra get event")
+
+    
+    setTimeout(() => {
+        $.ajax({
+            type: "POST",
+            url: url_eventInfo, // the URL of the controller action method
+            contentType: "application/x-www-form-urlencoded",
+            data: {id:id}, // optional data
+            success: function(result) {
+                loader_event_description();
+                console.log(result)
+                $("#asociable_events_info_cont").html(result);
+                // do something with result
+            },
+            error: function(req, status, error) {
+                alert(error);
+                // do something with error   
+            }
+        });
+    }, 500);
+
+}
+
+var url_incidentInfo = "/incidents/getAsociatedIncident"
+
+function getIdIncident(id) {
+    console.log("entra get incident")
+    
+    setTimeout(() => {
+        $.ajax({
+            type: "POST",
+            url: url_incidentInfo, // the URL of the controller action method
+            contentType: "application/x-www-form-urlencoded",
+            data: {id:id}, // optional data
+            success: function(result) {
+                loader_asociated_incident();
+                $("#asociate_events").html(result);
+                // do something with result
+            },
+            error: function(req, status, error) {
+                alert(error);
+                // do something with error   
+            }
+        });
+    }, 500);
+
+}
+
+    
+
+
+</script>

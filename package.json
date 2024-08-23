@@ -1,0 +1,50 @@
+{
+    "name": "CIE",
+    "version": "1.11.2",
+    "description": "Servicio de emergencias",
+    "main": "main.js",
+    "scripts": {
+        "start": "electron .",
+        "pack": "electron-builder --dir",
+        "dist": "electron-builder"
+    },
+    "keywords": [],
+    "author": "Tecnoprocesos",
+    "license": "ISC",
+    "build": {
+        "appId": "com.tecnoprocesos.app",
+        "asar": false,
+        "win": {
+            "target": "NSIS",
+            "icon": "build/ico_logo.ico"
+        }
+    },
+    "dependencies": {
+        "@types/arcgis-js-api": "^4.21.0",
+        "base-64": "^1.0.0",
+        "body-parser": "^1.19.0",
+        "cheerio": "^1.0.0-rc.10",
+        "cookie-parser": "^1.4.5",
+        "crud": "^0.0.28",
+        "ejs": "^3.1.6",
+        "ejs-electron": "^2.1.1",
+        "electron-alert": "^0.1.19",
+        "electron-ejs": "^1.2.1",
+        "electron-reload": "^2.0.0-alpha.1",
+        "express": "^4.17.1",
+        "express-session": "^1.17.2",
+        "form-data": "^4.0.0",
+        "form-urlencoded": "^6.0.5",
+        "morgan": "^1.10.0",
+        "node-fetch": "^3.0.0",
+        "node-localstorage": "^2.2.1",
+        "public-ip": "^4.0.4",
+        "request": "^2.88.2",
+        "sweetalert": "^2.1.2",
+        "xmlhttprequest": "^1.8.0"
+    },
+    "devDependencies": {
+        "electron": "^15.3.0",
+        "electron-builder": "^22.13.1"
+    }
+}

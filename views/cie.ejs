@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="es">
+<!-- head -->
+    <%- include ('templates/head') -%>  
+<body> 
+ <!-- header -->
+ <div class="content-desktop col-12">
+  <!-- <div id="loader_cie"></div>
+  <div style="display:none;" id="cie_homepage" class="animate-bottom"> -->
+  <div class="cont-map">
+    <!-- <span class="logo_cie"></span> -->
+    <!-- <div class="cont_turn_layer" id="cont_turn_layer"></div> -->
+      <div id="appContainer">
+        <div id="viewDiv"> 
+          </div>
+          <div id="tableContainer" class="container">
+            <div id="tableDiv"></div>
+
+
+          </div>
+          <%- include ('reporte') -%>
+          <%- include ('templates/filtroDesplegable') -%>
+          
+
+ 
+        </div>
+
+  </div>
+
+  <div name="id_geo_cont" id="id_geo_cont" ></div>
+  <div name="cambio_estado_cont" id="cambio_estado_cont" ></div>
+  
+<!--   <div id="evento_bd_id_cont"><input id="evento_bd_id"></input></div> -->
+            <%- include ('templates/panelOperador') -%>
+            <%- include ('templates/resumen') -%> 
+            <%- include ('templates/diagnostico') -%> 
+            <%- include ('templates/panel') -%>
+            <%- include ('templates/filtros') -%>
+
+    </div>   
+
+  </div>
+        <script src="https://js.arcgis.com/4.20/"></script>  
+        <script src="/js/script.js"></script> 
+        
+</body>
+</html>

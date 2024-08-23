@@ -1,0 +1,103 @@
+<html>
+
+<body>
+
+    <% for(var incidents of incidentData) {%>
+        <table border=1>
+            <tr>
+                <td>nombre</td>
+                <td>tipo_usuario</td>
+                <td>ip</td>
+                <td>evento</td>
+                <td>tipo_evento</td>
+                <td>direccion</td>
+                <td>ubicacion</td>
+                <td>localidad</td>
+                <td>barrio</td>
+                <td>tipo_vivienda</td>
+                <td>piso</td>
+                <td>apto</td>
+                <td>modo_geolocalizacion</td>
+                <td>cruce_calle</td>
+                <td>latitud</td>
+                <td>longitud</td>
+                <td>altitud</td>
+                <td>veracidad</td>
+                <td>fecha_inicio</td>
+                <td>fecha_final</td>
+                <td>comentarios</td>
+                <td>reporta</td>
+            </tr>
+            <tr>
+                <td>
+                    <%= incidents.nombre %>
+                </td>
+                <td>
+                    <%= incidents.tipo_usuario %>
+                </td>
+                <td>
+                    <%= incidents.ip %>
+                </td>
+                <td>
+                    <%= incidents.evento %>
+                </td>
+                <td>
+                    <%= incidents.tipo_evento %>
+                </td>
+                <td>
+                    <%= incidents.direccion %>
+                </td>
+                <td>
+                    <%= incidents.ubicacion %>
+                </td>
+                <td>
+                    <%= incidents.localidad %>
+                </td>
+                <td>
+                    <%= incidents.barrio %>
+                </td>
+                <td>
+                    <%= incidents.tipo_vivienda %>
+                </td>
+                <td>
+                    <%= incidents.piso %>
+                </td>
+                <td>
+                    <%= incidents.apto %>
+                </td>
+                <td>
+                    <%= incidents.modo_geolocalizacion %>
+                </td>
+                <td>
+                    <%= incidents.cruce_calle %>
+                </td>
+                <td>
+                    <%= incidents.latitud %>
+                </td>
+                <td>
+                    <%= incidents.longitud %>
+                </td>
+                <td>
+                    <%= incidents.altitud %>
+                </td>
+                <td>
+                    <%= incidents.veracidad %>
+                </td>
+                <td>
+                    <%= incidents.fecha_inicio %>
+                </td>
+                <td>
+                    <%= incidents.fecha_final %>
+                </td>
+                <td>
+                    <%= incidents.comentarios %>
+                </td>
+                <td>
+                    <%= incidents.reporta %>
+                </td>
+            </tr>
+        </table>
+        <% } %>
+</body>
+
+</html>
